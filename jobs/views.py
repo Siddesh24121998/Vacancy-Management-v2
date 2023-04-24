@@ -5,6 +5,7 @@ from .models import Job
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
+from applicationcount import generate
 
 def index(request):
     jobs = Job.objects.order_by('-job_date').filter(is_published = True) # Fetching data from db
@@ -23,9 +24,11 @@ def job(request,job_id):
      #If user searches for an invalid job , display a 404 error page
 
     job = get_object_or_404(Job , pk=job_id)
+    application_count = generate.get_application_count()
 
     context = {
-        'job': job
+        'job': job,
+        'applications_count':application_count,
     }
 
     return render (request , 'jobs/job.html',context)

@@ -3,6 +3,7 @@ from django.contrib import messages, auth
 from accounts.models import User 
 from applications.models import Application
 from django.contrib.auth.decorators import login_required
+from applicationcount import generate
 
 # Create your views here.
 def login(request):
@@ -49,7 +50,8 @@ def register(request):
            messages.error(request , 'Passwords do not match!')
            return redirect('register')
     else:
-        return render(request,'accounts/register.html')
+        generate_pass = generate.generate_password()
+        return render(request,'accounts/register.html', {'generated_password':generate_pass})
         
 def logout(request):
     if request.method == "POST":
