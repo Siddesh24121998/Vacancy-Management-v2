@@ -15,7 +15,7 @@ SECRET_KEY = 'ih)tbnc6#9e+$r*=fu&urnnv7m=b(lzl4%#b+0v#vg(517aqec'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -75,10 +75,10 @@ WSGI_APPLICATION = 'vacancy_management.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'job_portal_django',
+         'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'macs321',
-        'HOST': 'localhost',
+        'PASSWORD': 'vacancy-db',
+        'HOST': 'x22160345-vacancy-db.ccvpvj32idfp.ap-southeast-1.rds.amazonaws.com',
         'PORT':'5432'
     }
 }
